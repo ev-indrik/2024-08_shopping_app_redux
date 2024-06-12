@@ -26,10 +26,10 @@ const SignInForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    try {
-       resetFormFields();
-      }
-     catch (error)
+    // try {
+    //    resetFormFields();
+    //   }
+    //  catch (error)
   };
 
   const handleChange = (event) => {
@@ -43,8 +43,6 @@ const SignInForm = () => {
       <h2>{"Already have an account?"}</h2>
       <span>{"Sign in with your email and password"}</span>
       <form onSubmit={handleSubmit}>
-      
-
         <FormInput
           label={"Email"}
           type={"email"}
