@@ -40,7 +40,12 @@ const SignInForm = () => {
         password
       );
       console.log(response);
-    } catch (error) {}
+    } catch (error) {
+      if (error.code === "auth/invalid-credential") {
+        alert("Incorerct email or password");
+      }
+      console.log(error);
+    }
   };
 
   const handleChange = (event) => {
@@ -77,7 +82,11 @@ const SignInForm = () => {
             Sign In
           </Button>
 
-          <Button buttonType={"google"} onClick={signInWithGoogle}>
+          <Button
+            type="button"
+            buttonType={"google"}
+            onClick={signInWithGoogle}
+          >
             Google Sign In
           </Button>
         </div>
