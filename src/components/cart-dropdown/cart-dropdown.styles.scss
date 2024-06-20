@@ -20,7 +20,9 @@
     height: 240px;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    // overflow: scroll;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Hide horizontal scrolling */
   }
 
   button {
