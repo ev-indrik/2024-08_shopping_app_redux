@@ -7,9 +7,7 @@ export const CartContext = createContext({
 
 export const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  value = { isCartOpen, setIsCartOpen };
+  const value = { isCartOpen, setIsCartOpen };
 
-  return (
-    <CartContext.Provider value={"value"}>{children}</CartContext.Provider>
-  );
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
