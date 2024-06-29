@@ -16,6 +16,8 @@ import {
   setDoc,
   collection,
   writeBatch,
+  query,
+  getDocs,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -43,7 +45,7 @@ export const signInWithGoogleRedirect = () =>
 
 export const db = getFirestore();
 
-// upload products to database
+// upload products to fire database
 
 export const addCollectionAndDocuments = async (
   collectionKey,
@@ -57,7 +59,22 @@ export const addCollectionAndDocuments = async (
     batch.set(docRef, object);
   });
   await batch.commit();
-  console.log("done");
+  // console.log("done");
+};
+
+// download products from fire database
+
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, "categories");
+  const q = query(collectionRef);
+  const querySnapshot = await getDocs(q);
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, items } = docSnapshot.data();
+    acc[title.toLowerCase()] = items;
+    return acc;
+  }, {});
+
+  return categoryMap;
 };
 
 // user
