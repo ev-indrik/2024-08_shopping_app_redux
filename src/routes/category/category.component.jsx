@@ -6,24 +6,25 @@ import { CategoriesContext } from "../../contexts/categories.context";
 
 import ProductCard from "../../components/product-card/product-card.component";
 
+import "./category.styles.scss";
+
 const Category = () => {
-  {
-    const category = useParams();
-    const { categoriesMap } = useContext(CategoriesContext);
-    const [products, setProducts] = useState([]);
+  const { category } = useParams(); // дістати параметр "category" з об'єкта, повернутого useParams
+  const { categoriesMap } = useContext(CategoriesContext);
+  const [products, setProducts] = useState(categoriesMap[category] || []);
 
-    useEffect(() => {
-      setProducts(categoriesMap[category]);
-    }, [category, categoriesMap]);
+  useEffect(() => {
+    setProducts(categoriesMap[category] || []);
+  }, [category, categoriesMap]);
 
-    return (
-      <div className="category-container">
-        {products.map((product) => (
+  return (
+    <div className="category-container">
+      {products &&
+        products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
-      </div>
-    );
-  }
+    </div>
+  );
 };
 
 export default Category;
