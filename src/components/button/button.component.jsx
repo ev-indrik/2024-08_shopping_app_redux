@@ -1,3 +1,5 @@
+import React from "react";
+
 import {
   BaseButton,
   GoogleSignInButton,
@@ -10,17 +12,24 @@ export const BUTTON_TYPE_CLASSES = {
   inverted: "inverted",
 };
 
-const getButton = (buttonType) =>
-  ({
+const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) => {
+  const buttonMap = {
     [BUTTON_TYPE_CLASSES.base]: BaseButton,
     [BUTTON_TYPE_CLASSES.google]: GoogleSignInButton,
     [BUTTON_TYPE_CLASSES.inverted]: InvertedButton,
-  }[buttonType]);
+  };
+
+  const CustomButton = buttonMap[buttonType];
+
+  return CustomButton;
+};
 
 const Button = ({ children, buttonType, ...otherProps }) => {
-  const CustomButton = getButton(
-    buttonType ? buttonType : BUTTON_TYPE_CLASSES.base
-  );
+  const CustomButton = getButton(buttonType);
+
+  if (!CustomButton) {
+    return null;
+  }
 
   return <CustomButton {...otherProps}>{children}</CustomButton>;
 };
