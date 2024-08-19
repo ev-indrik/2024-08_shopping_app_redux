@@ -1,6 +1,5 @@
 import { compose, createStore, applyMiddleware } from "redux";
 import logger from "redux-logger";
-// import { thunk } from "redux-thunk";
 
 import createSagaMiddleware from "redux-saga";
 import { rootSaga } from "./root-saga";
