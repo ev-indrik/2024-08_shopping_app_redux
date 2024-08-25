@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { setCurrentUser } from "./user.action";
 
 const INITIAL_STATE = {
   currentUser: null,
