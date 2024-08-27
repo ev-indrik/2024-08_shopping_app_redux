@@ -6,7 +6,15 @@ import {
   clearItemFromCart,
 } from "../../store/cart/cart.reducer";
 
-import "./checkout-item.styles.scss";
+import {
+  CheckoutItemContainer,
+  ImageContainer,
+  BaseSpan,
+  Quantity,
+  Arrow,
+  Value,
+  RemoveButton,
+} from "./checkout-item.styles";
 
 const CheckoutItem = ({ cartItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
