@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 import CrwnLogo from "../../assets/crown.svg";
 
-import { secelctCurrentUser } from "../../store/user/user.selector";
+import { selectCurrentUser } from "../../store/user/user.selector";
 import { selectIsCartOpen } from "../../store/cart/cart.selector";
 
 import { signOutUser } from "../../utils/firebase/firebase.utils";
@@ -21,7 +21,7 @@ import {
 } from "./navigation.component.styles";
 
 const Navigation = () => {
-  const currentUser = useSelector(secelctCurrentUser);
+  const currentUser = useSelector(selectCurrentUser);
   const isCartOpen = useSelector(selectIsCartOpen);
 
   return (
